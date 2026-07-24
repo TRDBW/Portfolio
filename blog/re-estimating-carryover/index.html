@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unfinished at the end of a Sprint: should you re-estimate? — Darrel Barreto-White</title>
+<meta name="description" content="Carryover, re-estimation and splitting — how each affects velocity, and the policy teams should adopt, with a decision simulator and a working-agreement…">
+<link rel="canonical" href="https://trdbw.com/blog/re-estimating-carryover/">
+<meta name="author" content="Darrel Barreto-White">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trdbw.com/blog/re-estimating-carryover/">
+<meta property="og:site_name" content="Darrel Barreto-White">
+<meta property="og:title" content="Unfinished at the end of a Sprint: should you re-estimate?">
+<meta property="og:description" content="Carryover, re-estimation and splitting — how each affects velocity, and the policy teams should adopt, with a decision simulator and a working-agreement…">
+<meta property="og:image" content="https://trdbw.com/headshot.jpg">
+<meta property="article:published_time" content="2026-06-23">
+<meta property="article:author" content="Darrel Barreto-White">
+<meta property="article:section" content="Estimation">
+<meta property="article:tag" content="Story points"><meta property="article:tag" content="Velocity"><meta property="article:tag" content="Definition of Done"><meta property="article:tag" content="Carryover">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unfinished at the end of a Sprint: should you re-estimate?">
+<meta name="twitter:description" content="Carryover, re-estimation and splitting — how each affects velocity, and the policy teams should adopt, with a decision simulator and a working-agreement…">
+<meta name="twitter:image" content="https://trdbw.com/headshot.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unfinished at the end of a Sprint: should you re-estimate?","description":"Carryover, re-estimation and splitting — how each affects velocity, and the policy teams should adopt, with a decision simulator and a working-agreement…","url":"https://trdbw.com/blog/re-estimating-carryover/","mainEntityOfPage":{"@type":"WebPage","@id":"https://trdbw.com/blog/re-estimating-carryover/"},"datePublished":"2026-06-23","dateModified":"2026-06-23","author":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"publisher":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"image":"https://trdbw.com/headshot.jpg","articleSection":"Estimation","keywords":"Story points, Velocity, Definition of Done, Carryover"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trdbw.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://trdbw.com/blog/"},{"@type":"ListItem","position":3,"name":"Unfinished at the end of a Sprint: should you re-estimate?","item":"https://trdbw.com/blog/re-estimating-carryover/"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f1efe9;color:#17191c;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#23406b;text-decoration:none}a:hover{color:#16294a;text-decoration:underline}
+.nav{position:sticky;top:0;z-index:20;background:rgba(241,239,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid #e2ded4}
+.nav .in{max-width:820px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#17191c;font-weight:600;font-size:15px}.brand:hover{text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:7px;background:#23406b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:#8a939c;margin-bottom:26px}.crumb a{color:#8a6d2f}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;color:#17191c;margin-bottom:16px;text-wrap:pretty}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:#8a939c;margin-bottom:28px}
+article h2{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-.01em;color:#17191c;margin:42px 0 12px;text-wrap:pretty}
+article h3{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#17191c;margin:30px 0 10px}
+article p{font-size:16.5px;line-height:1.78;color:#3d434b;margin:0 0 16px}
+article ul,article ol{font-size:16.5px;line-height:1.7;color:#3d434b;margin:0 0 18px;padding-left:24px}
+article li{margin-bottom:7px}
+article blockquote{margin:0 0 18px;padding:6px 0 6px 22px;border-left:3px solid #23406b;font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.5;color:#4a5058}
+.note{background:#fbfaf7;border:1px solid #e6e2d8;border-radius:12px;padding:8px 18px;margin:0 0 18px}
+.note p{font-size:15px;line-height:1.6;color:#3d434b;margin:11px 0}
+.cta{display:inline-flex;align-items:center;gap:8px;background:#23406b;color:#fff;padding:12px 18px;border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;margin:6px 0 30px}
+.cta:hover{background:#16294a;color:#fff;text-decoration:none}
+.related{margin-top:52px;border-top:1px solid #ddd7ca;padding-top:24px}
+.related .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+.related a{display:block;padding:13px 15px;border:1px solid #e6e2d8;border-radius:9px;background:#fbfaf7;margin-bottom:8px;color:#17191c;font-weight:500;font-size:15px}
+.related a:hover{border-color:#ccd8ea;background:#eef2f8;text-decoration:none}
+.related a .rm{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a939c;font-weight:400;margin-top:3px}
+footer{border-top:1px solid #e2ded4;background:#f1efe9}
+footer .in{max-width:760px;margin:0 auto;padding:22px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a939c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in"><a class="brand" href="/"><span class="mk">D</span>Darrel Barreto-White</a><a href="/blog/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#23406b">All articles</a></div></div>
+<div class="wrap">
+<nav class="crumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Estimation</nav>
+<div class="kicker">Estimation</div>
+<h1>Unfinished at the end of a Sprint: should you re-estimate?</h1>
+<div class="meta">23 Jun 2026 · 17 min read</div>
+<a class="cta" href="/#/blog/re-estimating-carryover">Explore the interactive version, with live tools →</a>
+<article>
+<p>How carryover, re-estimation and splitting affect velocity — and the policy teams should adopt</p>
+<p>A Sprint is ending and an eight-point Product Backlog item is almost complete.</p>
+<p>The development work is finished, but testing has exposed a defect. Alternatively, the feature works but has not passed security review. Perhaps the team has completed most of the intended functionality but one important acceptance criterion remains unmet.</p>
+<p>The item does not meet the Definition of Done.</p>
+<p>What should happen next?</p>
+<p>Common answers include:</p>
+<ul><li>Move the item into the next Sprint with its original estimate.</li><li>Re-estimate it based on the work remaining.</li><li>Split the completed and incomplete portions.</li><li>Award partial story points for the work already completed.</li><li>Mark it as Done and create a new item for the final tasks.</li></ul>
+<p>These approaches produce very different effects on the Product Backlog, Sprint Planning and velocity.</p>
+<p>The debate is often framed as an accounting question:</p>
+<blockquote>Where should the story points go?</blockquote>
+<p>That is the wrong place to begin.</p>
+<p>The first questions should be:</p>
+<ul><li>Is the item genuinely Done?</li><li>Is it still valuable?</li><li>Should it be worked on next?</li><li>How much work is now believed to remain?</li><li>What information will help the team make the next forecast?</li></ul>
+<p>The purpose of estimation is to support decisions. It is not to ensure that every hour of effort receives story-point credit.</p>
+<h2>What Scrum actually requires</h2>
+<p>Scrum provides a clear rule for incomplete work.</p>
+<p>A Product Backlog item that does not meet the Definition of Done is not part of the Increment. It does not become complete because the Sprint has ended, because most of the development is finished or because the team believes it is "about 90% done".</p>
+<p>The unfinished item returns to the Product Backlog for future consideration.</p>
+<p>This has several implications.</p>
+<h3>It receives no partial credit</h3>
+<p>If an item does not meet the Definition of Done, it should not contribute partially to the Sprint's completed story points.</p>
+<p>An eight-point item that is nearly finished still contributes zero points to that Sprint's velocity.</p>
+<p>This may feel harsh when the team has invested significant effort, but velocity should represent completed work rather than effort spent.</p>
+<h3>It does not automatically enter the next Sprint</h3>
+<p>The phrases "carryover" and "spillover" can create the impression that unfinished work automatically crosses the Sprint boundary.</p>
+<p>It does not.</p>
+<p>The Product Owner must consider the item alongside the rest of the Product Backlog. Business conditions, incidents, customer needs and organisational priorities may have changed during the Sprint.</p>
+<p>The most likely decision may be to finish the item immediately, but that should still be a deliberate decision.</p>
+<h3>Scrum does not mandate story points</h3>
+<p>Story points and velocity are optional practices used by many Scrum Teams. They are not prescribed by the Scrum framework.</p>
+<p>Scrum requires the Product Backlog to be ordered and sufficiently transparent. It also makes Developers responsible for sizing Product Backlog items.</p>
+<p>It does not prescribe:</p>
+<ul><li>A particular estimation scale</li><li>A velocity calculation</li><li>Whether an estimate must be changed after a Sprint</li><li>Whether Sprint Planning should be driven by points</li></ul>
+<p>The team therefore needs an explicit working agreement that supports transparency and useful planning.</p>
+<h2>Velocity should describe completed work</h2>
+<p>Velocity is commonly calculated as the total story points attached to Product Backlog items completed during a Sprint.</p>
+<p>Only items meeting the Definition of Done should be included.</p>
+<p>This means:</p>
+<ul><li>No points for development-complete but untested work</li><li>No points for an item awaiting approval</li><li>No percentage-based credit</li><li>No points for incomplete technical tasks hidden inside a story</li><li>No points awarded merely because substantial effort was spent</li></ul>
+<p>This is not intended to punish the team.</p>
+<p>It protects the meaning of the metric.</p>
+<p>If partially completed items contribute to velocity, the team may appear to have delivered more usable work than it actually has. Any forecast based on that velocity will inherit the distortion.</p>
+<p>Velocity is also not a performance target.</p>
+<p>A team should not be pressured to recover points, protect an average or demonstrate that it has been busy. Velocity is only useful when it helps the team reason about future work.</p>
+<div class="note"><p>Done is a boundary, not a percentage</p><p>Interactive — toggle each condition</p><p>An item only crosses the Done boundary when every condition below is satisfied — there is no partial-credit version of this checklist.</p><p>{{ dodCheckedCount }} of {{ dodTotal }} conditions met</p></div>
+<h2>Approach one: retain the original estimate</h2>
+<p>Under this approach, an unfinished item keeps its original story-point estimate.</p>
+<p>Suppose an eight-point item is incomplete at the end of Sprint One.</p>
+<p>The team records:</p>
+<ul><li>Sprint One: zero points</li><li>Sprint Two: eight points when the item is completed</li></ul>
+<p>Across those two Sprints, the item contributes an average of four points per Sprint.</p>
+<p>This is the basis of the argument that the numbers average out over time.</p>
+<h3>Advantages</h3>
+<p>Retaining the original estimate:</p>
+<ul><li>Preserves the estimate of the complete outcome</li><li>Avoids estimation work that may provide little new value</li><li>Prevents teams from repeatedly adjusting points to protect velocity</li><li>Keeps the original comparison with other completed items</li><li>Allows rolling-average velocity to absorb the temporary fluctuation</li><li>Works well when the item will be completed immediately</li></ul>
+<p>It can be a sensible approach when:</p>
+<ul><li>The item remains the highest priority</li><li>Its scope has not changed</li><li>It will be completed in the next Sprint</li><li>The team understands the work remaining</li><li>Sprint Planning is based on capacity and discussion rather than a strict point quota</li></ul>
+<h3>Disadvantages</h3>
+<p>The original estimate no longer describes the work remaining.</p>
+<p>An eight-point item may only require the equivalent effort of a two- or three-point item to finish.</p>
+<p>If the team plans the next Sprint by selecting work until it reaches its average velocity, the item may appear larger than it really is. The team may reject other work that could realistically fit.</p>
+<p>The Product Backlog can also temporarily overstate the remaining delivery effort.</p>
+<p>Retaining the estimate becomes more problematic when:</p>
+<ul><li>The item will be deferred</li><li>Its priority has changed</li><li>The scope has changed</li><li>Another team may complete it</li><li>Significant time may pass before it resumes</li><li>The original context will be forgotten</li><li>Forecasts depend heavily on the total points remaining</li></ul>
+<p>The approach is simple, but it relies on the team understanding that the original points describe the complete item rather than its remaining effort.</p>
+<h2>Approach two: re-estimate the remaining work</h2>
+<p>Under this approach, Developers reconsider the size of the item based on what remains.</p>
+<p>An original eight-point item might be re-estimated as three points.</p>
+<p>The team records:</p>
+<ul><li>Sprint One: zero points</li><li>Sprint Two: three points when the remaining work is completed</li></ul>
+<h3>Advantages</h3>
+<p>Re-estimation makes the Product Backlog reflect the team's current understanding.</p>
+<p>It can improve:</p>
+<ul><li>Sprint Planning</li><li>Backlog transparency</li><li>Release forecasting</li><li>Capacity discussions</li><li>Comparisons with newly refined items</li><li>Decisions about whether the remaining work is still worth completing</li></ul>
+<p>This is particularly useful when the item is not expected to continue immediately.</p>
+<p>If the work returns to the backlog for several Sprints, the Product Owner needs an estimate of the current option — not a historical estimate of the original item before work began.</p>
+<p>Re-estimation is also useful when the team has learned that:</p>
+<ul><li>The remaining work is more difficult than expected</li><li>The original solution is no longer appropriate</li><li>Additional scope has emerged</li><li>Some scope is no longer required</li><li>A dependency has changed</li><li>The item needs to be reframed</li></ul>
+<h3>Disadvantages</h3>
+<p>Re-estimating remaining work changes the relationship between completed velocity and effort invested.</p>
+<p>In the example, the team worked on an eight-point item across two Sprints but records only three completed points.</p>
+<p>The other five points do not appear in velocity because they did not produce a Done item during Sprint One.</p>
+<p>That is not necessarily wrong. Story points are not payment for effort. However, repeated re-estimation can make historical velocity less comparable and less useful for forecasting similarly sized new work.</p>
+<p>Re-estimation can also create undesirable behaviour when teams:</p>
+<ul><li>Reduce estimates to disguise unfinished work</li><li>Increase estimates to recover lost velocity</li><li>Debate points more than the delivery decision</li><li>Treat every Sprint boundary as a mandatory estimation ceremony</li><li>Rewrite history without preserving the original estimate</li></ul>
+<p>Re-estimation should improve a decision. It should not become story-point accounting.</p>
+<h2>Approach three: split the item</h2>
+<p>A third option is to split the original item into:</p>
+<ul><li>A completed portion</li><li>A remaining portion</li></ul>
+<p>This is only valid when the completed portion independently meets the Definition of Done.</p>
+<p>For example, suppose a team originally planned:</p>
+<blockquote>Customers can view and update their contact details.</blockquote>
+<p>During the Sprint, the team completes and verifies the ability to view contact details. Updating contact details remains incomplete.</p>
+<p>The item may legitimately be split into:</p>
+<ul><li>Customers can view their contact details</li><li>Customers can update their contact details</li></ul>
+<p>If the first outcome is usable, meets the Definition of Done and can be inspected as part of the Increment, it can be treated as completed work.</p>
+<p>The remaining outcome returns to the Product Backlog and is estimated appropriately.</p>
+<h3>When splitting is appropriate</h3>
+<p>Splitting is reasonable when:</p>
+<ul><li>The completed portion is independently usable</li><li>It meets the Definition of Done</li><li>It provides a meaningful outcome</li><li>The remaining portion can be described clearly</li><li>The split improves Product Backlog transparency</li></ul>
+<h3>When splitting becomes gaming</h3>
+<p>Splitting is not appropriate when the team creates an artificial "completed" item purely to recover points.</p>
+<p>Examples include:</p>
+<ul><li>Development complete, testing remaining</li><li>Backend complete, interface remaining</li><li>Coding complete, security approval remaining</li><li>Most acceptance criteria complete, one essential criterion remaining</li><li>Technical tasks completed but no usable outcome exists</li></ul>
+<p>These are activities within an unfinished item, not separate Done outcomes.</p>
+<p>A last-minute split should not be used to make the velocity chart look healthier.</p>
+<p>Where possible, valuable splits should be identified during refinement or early enough in the Sprint for each part to be delivered properly.</p>
+<p>For more on creating smaller, independently valuable items, this connects naturally to splitting work into outcomes that can be delivered and prioritised separately.</p>
+<h2>Approach four: award partial points</h2>
+<p>Some teams attempt to estimate how much of the item is complete.</p>
+<p>For an eight-point item, they may record:</p>
+<ul><li>Five points in Sprint One</li><li>Three points in Sprint Two</li></ul>
+<p>This should not be done unless the five-point portion represents a genuinely separate Done item.</p>
+<p>Percentage-complete estimates are unreliable.</p>
+<p>A team saying it is 80% complete usually means it has completed 80% of the work it currently understands. Testing, integration and final validation may expose additional work.</p>
+<p>The final part of an item is often where hidden complexity appears.</p>
+<p>Partial credit also weakens the Definition of Done. It creates a second category of work that is not Done but is treated as partly delivered for reporting purposes.</p>
+<p>The result may be a smoother velocity chart, but it provides less transparency.</p>
+<blockquote>A smooth metric produced by changing the meaning of Done is less useful than an uneven metric that tells the truth.</blockquote>
+<h2>How each approach affects velocity</h2>
+<p>Consider an eight-point item that is incomplete after Sprint One. The team now believes the remaining work is comparable to a three-point item.</p>
+<div class="note"><p>How four treatments of unfinished work affect velocity across two Sprints.</p><p>Approach</p><p>Sprint One</p><p>Sprint Two</p><p>2-Sprint average</p><p>Main implication</p><p>Retain original estimate</p><p>0. 8</p><p>4. Velocity is uneven but may average out when the item finishes quickly</p><p>Re-estimate remaining work</p><p>0. 3</p><p>1.5</p><p>Backlog reflects remaining effort, but historical velocity falls</p><p>Split into genuine Done and remaining outcomes</p><p>5. 3</p><p>4. Valid only when the completed portion independently meets the Definition of Done</p><p>Award partial credit without a Done outcome</p><p>5. 3</p><p>4. Creates misleading velocity and weakens the meaning of Done</p></div>
+<p>The table exposes the central trade-off.</p>
+<p>Retaining the original estimate protects the historical size of the outcome.</p>
+<p>Re-estimating improves the representation of remaining work.</p>
+<p>A valid split can preserve both, but only when the item contains independently Done outcomes.</p>
+<p>There is no benefit in forcing every situation into the same accounting treatment.</p>
+<div class="note"><p>Velocity treatment comparison</p><p>Interactive — illustrative Sprints</p><p>All data below is illustrative.</p><p>1 Choose treatments to compare</p><p>2 Adjust the estimates and delay</p><p>3 Compare the charts and rolling averages</p><p>Original estimate</p><p>{{ velOrigNum.val }}</p><p>Remaining estimate</p><p>{{ velRemNum.val }}</p><p>Sprints before it resumes</p><p>{{ velAwayNum.val }}</p><p>Rolling-average window</p><p>{{ velRollNum.val }}</p></div>
+<h2>What happens when priorities change?</h2>
+<p>This is where automatic carryover causes the greatest difficulty.</p>
+<p>Suppose the eight-point item is unfinished, but a critical regulatory change now needs the team's attention.</p>
+<p>The Product Owner may decide that the unfinished item should not enter the next Sprint.</p>
+<p>If it keeps its original estimate indefinitely:</p>
+<ul><li>The backlog overstates the work remaining</li><li>Future planning may treat it as larger than it is</li><li>The item may become difficult to understand</li><li>The partially implemented solution may deteriorate</li><li>The product or technical context may change before work resumes</li></ul>
+<p>In this situation, the team should refine the item.</p>
+<p>That may involve:</p>
+<ul><li>Re-estimating the remaining work</li><li>Splitting out what remains</li><li>Rewriting the item around the remaining outcome</li><li>Removing obsolete scope</li><li>Adding newly discovered work</li><li>Deciding not to complete it</li><li>Reverting or safely isolating incomplete implementation</li></ul>
+<p>Priority changes are therefore a strong reason to re-estimate or restructure unfinished work.</p>
+<p>The item should not be carried automatically simply because effort has already been invested. That would allow sunk cost to override current value.</p>
+<p>The relationship between ordering and changing priorities can be linked to how Product Backlog rank should respond to value, risk and new information.</p>
+<div class="note"><p>The priority changed — now what?</p><p>Interactive — pick a response</p><p>An unfinished eight-point customer feature. A newly discovered mandatory regulatory item. Limited team capacity. A small amount of work believed to remain on the customer feature.</p><p>There is no single correct answer here — each choice trades off value, risk, work in progress and honesty about sunk cost.</p></div>
+<h2>Always reconsider, not always re-estimate</h2>
+<p>The most practical policy is:</p>
+<blockquote>Always reconsider unfinished work at the Sprint boundary. Re-estimate it when the new estimate will improve a decision.</blockquote>
+<p>This avoids two rigid extremes:</p>
+<ul><li>Never re-estimating anything</li><li>Automatically re-estimating every unfinished item</li></ul>
+<p>Use the following decision policy.</p>
+<div class="note"><p>Recommended action and velocity treatment for each situation an unfinished item may be in.</p><p>Situation</p><p>Recommended action</p><p>Velocity treatment</p><p>Item meets the Definition of Done Complete it normally Count its points in the current Sprint</p><p>Incomplete, continues immediately with unchanged scope Return to Product Backlog, deliberately re-select, normally retain the original estimate Zero points now; full original points when Done</p><p>Item will be deferred Refine and re-estimate the remaining work Zero points until a Done outcome is completed</p><p>Scope or solution has materially changed Rewrite, split or re-estimate based on current understanding Count only future Done items</p><p>A genuinely independent portion is Done Split into a Done item and a remaining item Count only the independently Done portion</p><p>Item is no longer valuable Remove or close it transparently No velocity credit</p><p>Partially implemented, no usable outcome exists Keep it incomplete No partial credit</p></div>
+<p>This policy protects the Definition of Done while allowing the backlog to remain honest.</p>
+<div class="note"><p>What should happen to the unfinished item?</p><p>Interactive — reasoned recommendation, not a ruling</p><p>Scenario: "Add customer card payments", originally 8 points. Development is complete, but payment-failure testing is incomplete — the Definition of Done is not met. Originally High priority; a mandatory consent change now competes for the team's limited next-Sprint capacity.</p><p>Press the conditions that apply — the recommendation below updates as you change them.</p><p>Original estimate</p><p>{{ reOriginalNum.val }}</p><p>Current estimate of remaining work</p><p>{{ reRemainingNum.val }}</p><p>Sprint Planning style</p><p>Reasoned recommendation</p><p>{{ reRec }}</p><p>{{ reWhy }}</p><p>Velocity: {{ reVelocity }}</p><p>Product Backlog: {{ reBacklog }}</p><p>Who decides: {{ reWho }}</p><p>Risk to watch: {{ reRisk }}</p></div>
+<div class="note"><p>The decision, as a tree</p><p>Interactive — select a node</p><p>Does it meet the Definition of Done? Yes: count it as completed. No: zero points, return it to the Product Backlog.</p><p>Is an independent portion genuinely Done? Yes: consider a valid split. No: keep it incomplete.</p><p>Is it still valuable and likely to continue immediately? Yes: normally retain the original estimate.</p><p>Will it be deferred, or has scope changed? Yes: refine and re-estimate the remaining work.</p><p>Is it no longer valuable? Yes: remove or close it transparently.</p><p>{{ curTreeNode.explain }}</p><p>◆ Example: {{ curTreeNode.example }}</p></div>
+<h2>Preserve both history and current understanding</h2>
+<p>Where tooling permits, preserve:</p>
+<ul><li>The original estimate</li><li>The current estimate of remaining work</li><li>The reason for the change</li><li>The Sprint in which the item was first started</li><li>The item's current priority</li><li>Any completed independent outcomes</li></ul>
+<p>Do not silently overwrite historical information purely to make reporting easier.</p>
+<p>A team may use:</p>
+<ul><li>An original-estimate field</li><li>A current-size field</li><li>Item history</li><li>Linked replacement items</li><li>A comment explaining the change</li><li>A simple carryover or unfinished-work marker</li></ul>
+<p>The exact tool configuration matters less than the transparency it creates.</p>
+<p>For teams using a single story-point field, the working agreement should state clearly whether that field represents:</p>
+<ul><li>Original size</li><li>Current remaining size</li><li>The size of the current refined outcome</li></ul>
+<p>Without that agreement, the same number may mean different things on different items.</p>
+<h2>Sprint Planning should not be point arithmetic</h2>
+<p>The difficulty becomes worse when teams treat average velocity as an exact allowance.</p>
+<p>A team with an average velocity of 30 may assume that every Sprint must contain exactly 30 points.</p>
+<p>If an unfinished eight-point item only has a small amount of work remaining, retaining its original estimate can make the Sprint appear full too early.</p>
+<p>The better planning conversation considers:</p>
+<ul><li>The Developers' current understanding</li><li>The work remaining</li><li>Upcoming capacity</li><li>Dependencies</li><li>The Definition of Done</li><li>The Sprint Goal</li><li>Recent delivery evidence</li></ul>
+<p>The team can retain the original estimate and still decide that the item will fit.</p>
+<p>Velocity can inform the forecast without controlling it.</p>
+<p>For a deeper explanation of how story points should support discussion rather than become a fixed capacity quota, this connects to implementing story points as relative estimates rather than hours or performance targets.</p>
+<h2>Look beyond velocity</h2>
+<p>The re-estimation debate often receives too much attention because velocity is being asked to answer too many questions.</p>
+<p>Teams should also inspect:</p>
+<ul><li>Percentage of selected items completed</li><li>Frequency of unfinished work</li><li>Work item age</li><li>Cycle time</li><li>Throughput</li><li>Work in progress</li><li>Blocked time</li><li>Sprint Goal success</li><li>Escaped defects</li><li>Time spent waiting for review or testing</li><li>Customer and product outcomes</li></ul>
+<p>These signals can reveal whether incomplete work is occasional or systemic.</p>
+<p>For example:</p>
+<ul><li>Increasing work item age may indicate that work is becoming stuck.</li><li>High work in progress may show that the team starts too much.</li><li>Repeated late testing may indicate that testing is being treated as a final phase.</li><li>Frequent priority changes may indicate weak Sprint Goals or uncontrolled interruptions.</li><li>Large items may indicate insufficient refinement and splitting.</li></ul>
+<p>A stable velocity does not prove that the team has healthy flow.</p>
+<p>An unstable velocity does not necessarily mean the team is performing poorly.</p>
+<div class="note"><p>Flow metrics — illustrative</p><p>Select one at a time</p><p>Never used to compare teams or individuals — only to understand this team's own flow over time.</p><p>{{ metricExplain }}</p></div>
+<h2>Use the Retrospective to examine the cause</h2>
+<p>Occasional unfinished work is normal in complex delivery.</p>
+<p>A repeated pattern deserves inspection.</p>
+<p>Useful questions include:</p>
+<ul><li>Was the item too large?</li><li>Was it sufficiently refined?</li><li>Did testing begin too late?</li><li>Was the Definition of Done understood?</li><li>Did the team start too many items?</li><li>Was work blocked by another team or supplier?</li><li>Did unplanned work consume capacity?</li><li>Was the Sprint Goal clear?</li><li>Did the team plan against an optimistic best case?</li><li>Could people have collaborated to finish the item earlier?</li><li>Did the item grow during the Sprint?</li><li>Was scope renegotiated as new information emerged?</li></ul>
+<p>The Retrospective should focus on improving the system, not recovering lost points.</p>
+<p>Possible experiments include:</p>
+<ul><li>Splitting items more aggressively</li><li>Reducing work in progress</li><li>Beginning testing earlier</li><li>Swarming on ageing work</li><li>Improving refinement</li><li>Making dependencies visible</li><li>Planning less work temporarily</li><li>Strengthening the Sprint Goal</li><li>Tracking unfinished-item trends</li></ul>
+<h2>The recommended working agreement</h2>
+<p>A practical team policy could read:</p>
+<blockquote>Product Backlog items only contribute to velocity when they meet the Definition of Done. An incomplete item returns to the Product Backlog and is reconsidered by the Product Owner and Developers. If it will continue immediately with unchanged scope, its original estimate may be retained. If it is deferred, materially changed or split, the remaining work is refined and estimated according to the team's current understanding. Partial points are never awarded unless a separate portion independently meets the Definition of Done.</blockquote>
+<p>This policy is clear without being unnecessarily rigid.</p>
+<p>It protects:</p>
+<ul><li>Product Backlog transparency</li><li>The Definition of Done</li><li>Product Owner ordering</li><li>Developer responsibility for sizing</li><li>Useful forecasting</li><li>The ability to respond when priorities change</li></ul>
+<div class="note"><p>Build your team's working agreement</p><p>Select clauses — nothing is saved or sent anywhere</p></div>
+<h2>Conclusion</h2>
+<p>The correct response to unfinished work is not to search for a way to recover the points.</p>
+<p>Begin with transparency.</p>
+<p>The item is either Done or it is not.</p>
+<p>If it is not Done:</p>
+<ul><li>It contributes no partial velocity</li><li>It returns to the Product Backlog</li><li>Its priority is reconsidered</li><li>Its remaining size is assessed when that information will support a decision</li></ul>
+<p>Retaining the original estimate can work when the item will be completed immediately and the scope remains unchanged. The temporary velocity dip and later increase can average out over time.</p>
+<p>Re-estimation is more useful when the item will be deferred, reprioritised, materially changed or compared with new backlog options.</p>
+<p>Splitting is appropriate only when the completed portion is independently usable and meets the Definition of Done.</p>
+<p>The best rule is therefore not "always re-estimate" or "never re-estimate".</p>
+<blockquote>Always reconsider the work. Re-estimate when it makes the next decision more truthful.</blockquote>
+<div class="note"><p>The prioritisation series</p><p>8. Unfinished at the End of a Sprint: Should You Re-estimate? You are here</p></div>
+</article>
+<a class="cta" href="/#/blog/re-estimating-carryover">Open the interactive version →</a>
+<section class="related"><div class="lbl">Related reading</div><a href="/blog/story-points/">Implementing story points: a practical guide<span class="rm">Estimation · 4 min read</span></a><a href="/blog/sprint-review/">Running a Sprint Review<span class="rm">Ceremonies · 5 min read</span></a><a href="/blog/frameworks-compared/">Agile frameworks compared: Scrum, Kanban and XP<span class="rm">Frameworks · 5 min read</span></a></section>
+</div>
+<footer><div class="in"><span>© Darrel Barreto-White</span><a href="/">trdbw.com</a></div></footer>
+</body>
+</html>

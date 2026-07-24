@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agile frameworks compared: Scrum, Kanban and XP — Darrel Barreto-White</title>
+<meta name="description" content="What each framework actually optimises for — cadence, flow and engineering discipline — how they differ and where they combine, with an interactive…">
+<link rel="canonical" href="https://trdbw.com/blog/frameworks-compared/">
+<meta name="author" content="Darrel Barreto-White">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trdbw.com/blog/frameworks-compared/">
+<meta property="og:site_name" content="Darrel Barreto-White">
+<meta property="og:title" content="Agile frameworks compared: Scrum, Kanban and XP">
+<meta property="og:description" content="What each framework actually optimises for — cadence, flow and engineering discipline — how they differ and where they combine, with an interactive…">
+<meta property="og:image" content="https://trdbw.com/headshot.jpg">
+<meta property="article:published_time" content="2026-07-17">
+<meta property="article:author" content="Darrel Barreto-White">
+<meta property="article:section" content="Frameworks">
+<meta property="article:tag" content="Scrum"><meta property="article:tag" content="Kanban"><meta property="article:tag" content="XP"><meta property="article:tag" content="Comparison">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agile frameworks compared: Scrum, Kanban and XP">
+<meta name="twitter:description" content="What each framework actually optimises for — cadence, flow and engineering discipline — how they differ and where they combine, with an interactive…">
+<meta name="twitter:image" content="https://trdbw.com/headshot.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Agile frameworks compared: Scrum, Kanban and XP","description":"What each framework actually optimises for — cadence, flow and engineering discipline — how they differ and where they combine, with an interactive…","url":"https://trdbw.com/blog/frameworks-compared/","mainEntityOfPage":{"@type":"WebPage","@id":"https://trdbw.com/blog/frameworks-compared/"},"datePublished":"2026-07-17","dateModified":"2026-07-17","author":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"publisher":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"image":"https://trdbw.com/headshot.jpg","articleSection":"Frameworks","keywords":"Scrum, Kanban, XP, Comparison"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trdbw.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://trdbw.com/blog/"},{"@type":"ListItem","position":3,"name":"Agile frameworks compared: Scrum, Kanban and XP","item":"https://trdbw.com/blog/frameworks-compared/"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f1efe9;color:#17191c;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#23406b;text-decoration:none}a:hover{color:#16294a;text-decoration:underline}
+.nav{position:sticky;top:0;z-index:20;background:rgba(241,239,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid #e2ded4}
+.nav .in{max-width:820px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#17191c;font-weight:600;font-size:15px}.brand:hover{text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:7px;background:#23406b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:#8a939c;margin-bottom:26px}.crumb a{color:#8a6d2f}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;color:#17191c;margin-bottom:16px;text-wrap:pretty}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:#8a939c;margin-bottom:28px}
+article h2{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-.01em;color:#17191c;margin:42px 0 12px;text-wrap:pretty}
+article h3{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#17191c;margin:30px 0 10px}
+article p{font-size:16.5px;line-height:1.78;color:#3d434b;margin:0 0 16px}
+article ul,article ol{font-size:16.5px;line-height:1.7;color:#3d434b;margin:0 0 18px;padding-left:24px}
+article li{margin-bottom:7px}
+article blockquote{margin:0 0 18px;padding:6px 0 6px 22px;border-left:3px solid #23406b;font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.5;color:#4a5058}
+.note{background:#fbfaf7;border:1px solid #e6e2d8;border-radius:12px;padding:8px 18px;margin:0 0 18px}
+.note p{font-size:15px;line-height:1.6;color:#3d434b;margin:11px 0}
+.cta{display:inline-flex;align-items:center;gap:8px;background:#23406b;color:#fff;padding:12px 18px;border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;margin:6px 0 30px}
+.cta:hover{background:#16294a;color:#fff;text-decoration:none}
+.related{margin-top:52px;border-top:1px solid #ddd7ca;padding-top:24px}
+.related .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+.related a{display:block;padding:13px 15px;border:1px solid #e6e2d8;border-radius:9px;background:#fbfaf7;margin-bottom:8px;color:#17191c;font-weight:500;font-size:15px}
+.related a:hover{border-color:#ccd8ea;background:#eef2f8;text-decoration:none}
+.related a .rm{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a939c;font-weight:400;margin-top:3px}
+footer{border-top:1px solid #e2ded4;background:#f1efe9}
+footer .in{max-width:760px;margin:0 auto;padding:22px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a939c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in"><a class="brand" href="/"><span class="mk">D</span>Darrel Barreto-White</a><a href="/blog/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#23406b">All articles</a></div></div>
+<div class="wrap">
+<nav class="crumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Frameworks</nav>
+<div class="kicker">Frameworks</div>
+<h1>Agile frameworks compared: Scrum, Kanban and XP</h1>
+<div class="meta">17 Jul 2026 · 5 min read</div>
+<a class="cta" href="/#/blog/frameworks-compared">Explore the interactive version, with live tools →</a>
+<article>
+<p>The three most common agile frameworks answer three different questions. What each one actually optimises for, how they truly differ, and why the strongest teams refuse to pick just one.</p>
+<p>"Are you Scrum or Kanban?" is one of the most common — and least useful — questions in agile delivery. It treats a framework as a team's identity rather than what it is: a tool chosen to fit the shape of the work.</p>
+<p>Scrum, Kanban and Extreme Programming (XP) are the three you will meet most often. They overlap, they disagree, and — importantly — they combine. Understanding what each is for is what lets you choose well, and mix deliberately.</p>
+<blockquote>Scrum manages complexity with cadence. Kanban manages flow with limits. XP manages quality with engineering discipline. Different problems, different tools.</blockquote>
+<h2>The three at a glance</h2>
+<p>Before comparing them, it helps to see what each is built to do.</p>
+<div class="note"><p>Scrum</p><p>A cadence for complex work</p><p>Fixed Sprints, three roles and a regular loop to plan, inspect and adapt. A predictable heartbeat for complex products.</p><p>Kanban</p><p>A system for flow</p><p>Continuous pull, explicit limits on work in progress, and no prescribed roles or iterations. Optimises how work flows.</p><p>XP</p><p>A discipline for quality</p><p>Engineering practices — TDD, pairing, CI — that keep changing software cheap and safe. Concerned with how you build.</p></div>
+<h2>Scrum: a protected rhythm</h2>
+<p>Scrum boxes work into fixed-length Sprints and wraps them in a small set of events and roles. The point is rhythm: a complex product gets a predictable cadence for planning, building, showing and improving.</p>
+<div class="note"><p>The Sprint cycle</p><p>Product Backlog</p><p>Sprint Planning</p><p>Sprint · Daily Scrum</p><p>Review</p><p>Retrospective</p><p>↺ repeat</p></div>
+<p>Three roles carry it: a Product Owner who owns the ordered backlog, a Scrum Master who protects the process, and the Developers who build the increment. The trade-off is deliberate: Scrum resists change mid-Sprint. That is a strength when priorities are stable for a week or two, and a friction when they are not.</p>
+<h2>Kanban: optimise the flow</h2>
+<p>Kanban adds no roles and no iterations. It does three things: make the work visible, limit how much is in progress at once, and pull the next item only when there is capacity to start it. Limiting WIP is the move that matters — it forces you to finish before you start, and makes the bottleneck impossible to ignore.</p>
+<div class="note"><p>A board with WIP limits</p><p>Backlog</p><p>To Do</p><p>In Prog 3</p><p>Review 2</p><p>Done</p></div>
+<p>Kanban shines when work is varied and unpredictable — support, operations, or a stream of small requests that would never fit neatly into a planned Sprint. There is no forced cadence, so re-prioritising costs nothing.</p>
+<h2>XP: the discipline of building well</h2>
+<p>Extreme Programming is less about how you manage work and more about how you build it. Where Scrum and Kanban largely stay silent on engineering, XP is explicit — and its practices are what most modern teams actually run, often without ever calling it XP.</p>
+<div class="note"><p>Test-driven development</p><p>Write the failing test first; let it drive the design.</p><p>Pair programming</p><p>Two people, one problem — review built into the writing.</p><p>Continuous integration</p><p>Merge and verify constantly, so problems surface small.</p><p>Refactoring</p><p>Improve the design continuously, without changing behaviour.</p><p>Small releases</p><p>Ship in thin slices; shorten the feedback loop.</p><p>Simple design</p><p>Build the simplest thing that works; add complexity only when it earns its place.</p></div>
+<p>Because XP is about the how, it layers cleanly on top of Scrum or Kanban rather than competing with them — which is exactly why the combinations below are so common.</p>
+<div class="note"><p>Interactive — compare Scrum, Kanban and XP</p><p>The matrix below is the head-to-head. Use the tabs to focus one framework's profile — the axes that differ most are cadence, tolerance for change, and where each spends its energy.</p><p>Scrum</p><p>Kanban</p><p>XP</p><p>Cadence</p><p>Fixed Sprints (1–4 wks)</p><p>Continuous flow</p><p>Short iterations</p><p>Roles</p><p>PO · Scrum Master · Devs</p><p>None prescribed</p><p>Customer · Programmers · Coach</p><p>Work intake</p><p>Sprint Backlog, set at planning</p><p>Pulled on free capacity</p><p>Iteration plan of stories</p><p>Change mid-cycle</p><p>Resisted by design</p><p>Welcome any time</p><p>Embraced, small releases</p><p>WIP control</p><p>Bounded by the Sprint</p><p>Explicit per-column limits</p><p>Pairing + small stories</p><p>Core strength</p><p>Rhythm &amp; focus</p><p>Flow &amp; responsiveness</p><p>Engineering quality</p><p>{{ fwName }}</p><p>Core strength</p><p>{{ fwStrength }}</p><p>Best when</p><p>{{ fwBest }}</p></div>
+<h2>They are not mutually exclusive</h2>
+<p>This is the part the "which one are we?" question misses entirely. Almost no strong team runs a single framework by the book. The two most common blends:</p>
+<div class="note"><p>Scrumban</p><p>A Scrum planning cadence with Kanban WIP limits and pull. Common for teams balancing planned product work against a reactive stream.</p><p>Scrum + XP</p><p>Scrum for the what and when ; XP's TDD, pairing and CI for the how . The most durable pairing in practice.</p></div>
+<div class="note"><p>Interactive — which framework fits your team</p><p>Three questions about your situation. There is no universal answer — the recommendation is a sensible starting point, not a verdict.</p><p>1 · How does work arrive?</p><p>2 · How stable are priorities within a week?</p><p>3 · Is engineering quality your biggest risk?</p></div>
+<h2>Choosing well</h2>
+<p>Whatever you land on, the same three principles keep the choice honest:</p>
+<ul><li>Diagnose the work first. How does it arrive, how often does it change, and where does it actually break? The work chooses the framework, not the other way round.</li><li>Adopt practices, not identities. Take a Sprint cadence, a WIP limit and a pairing habit if they help — you do not owe any framework purity.</li><li>Measure the outcome, not the ceremony count. Flow, quality and predictability are the scoreboard; the number of meetings never was.</li></ul>
+<h2>Where it goes wrong</h2>
+<p>Most framework failures are one of three patterns — and none is the framework's fault:</p>
+<ul><li>Cargo cult. Running the ceremonies without the mindset — stand-ups that only report, retros that change nothing.</li><li>Framework as identity. Defending the label once the work has outgrown it, rather than adapting the process to fit.</li><li>Skipping the engineering. Scrum or Kanban with no XP practices underneath — fast planning stacked on fragile code.</li></ul>
+<h2>Conclusion</h2>
+<p>Scrum, Kanban and XP are not competing religions to convert to. They are tools built for different problems: cadence for complexity, flow for unpredictability, engineering discipline for quality. And when scale enters the picture, these same choices reappear one level up — which is where a framework like SAFe coordinates many teams at once.</p>
+<blockquote>Pick the framework the work needs — then borrow freely. The label is nothing; the outcome is everything.</blockquote>
+<div class="note"><p>Related reading</p></div>
+</article>
+<a class="cta" href="/#/blog/frameworks-compared">Open the interactive version →</a>
+<section class="related"><div class="lbl">Related reading</div><a href="/blog/sprint-review/">Running a Sprint Review<span class="rm">Ceremonies · 5 min read</span></a><a href="/blog/implementing-safe/">Implementing SAFe: a practical guide<span class="rm">Scaling · 7 min read</span></a><a href="/blog/product-goal-to-backlog/">From Product Goal to Product Backlog<span class="rm">Product · 10 min read</span></a></section>
+</div>
+<footer><div class="in"><span>© Darrel Barreto-White</span><a href="/">trdbw.com</a></div></footer>
+</body>
+</html>

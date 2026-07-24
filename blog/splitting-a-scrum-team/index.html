@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splitting a Scrum team — Darrel Barreto-White</title>
+<meta name="description" content="When one team has outgrown a single conversation — the signals I watch for, why you split around value rather than technology, and how to draw the line so each…">
+<link rel="canonical" href="https://trdbw.com/blog/splitting-a-scrum-team/">
+<meta name="author" content="Darrel Barreto-White">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trdbw.com/blog/splitting-a-scrum-team/">
+<meta property="og:site_name" content="Darrel Barreto-White">
+<meta property="og:title" content="Splitting a Scrum team">
+<meta property="og:description" content="When one team has outgrown a single conversation — the signals I watch for, why you split around value rather than technology, and how to draw the line so each…">
+<meta property="og:image" content="https://trdbw.com/headshot.jpg">
+<meta property="article:published_time" content="2026-05-21">
+<meta property="article:author" content="Darrel Barreto-White">
+<meta property="article:section" content="Teams">
+<meta property="article:tag" content="Team design"><meta property="article:tag" content="Scaling"><meta property="article:tag" content="Ownership">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Splitting a Scrum team">
+<meta name="twitter:description" content="When one team has outgrown a single conversation — the signals I watch for, why you split around value rather than technology, and how to draw the line so each…">
+<meta name="twitter:image" content="https://trdbw.com/headshot.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Splitting a Scrum team","description":"When one team has outgrown a single conversation — the signals I watch for, why you split around value rather than technology, and how to draw the line so each…","url":"https://trdbw.com/blog/splitting-a-scrum-team/","mainEntityOfPage":{"@type":"WebPage","@id":"https://trdbw.com/blog/splitting-a-scrum-team/"},"datePublished":"2026-05-21","dateModified":"2026-05-21","author":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"publisher":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"image":"https://trdbw.com/headshot.jpg","articleSection":"Teams","keywords":"Team design, Scaling, Ownership"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trdbw.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://trdbw.com/blog/"},{"@type":"ListItem","position":3,"name":"Splitting a Scrum team","item":"https://trdbw.com/blog/splitting-a-scrum-team/"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f1efe9;color:#17191c;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#23406b;text-decoration:none}a:hover{color:#16294a;text-decoration:underline}
+.nav{position:sticky;top:0;z-index:20;background:rgba(241,239,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid #e2ded4}
+.nav .in{max-width:820px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#17191c;font-weight:600;font-size:15px}.brand:hover{text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:7px;background:#23406b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:#8a939c;margin-bottom:26px}.crumb a{color:#8a6d2f}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;color:#17191c;margin-bottom:16px;text-wrap:pretty}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:#8a939c;margin-bottom:28px}
+article h2{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-.01em;color:#17191c;margin:42px 0 12px;text-wrap:pretty}
+article h3{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#17191c;margin:30px 0 10px}
+article p{font-size:16.5px;line-height:1.78;color:#3d434b;margin:0 0 16px}
+article ul,article ol{font-size:16.5px;line-height:1.7;color:#3d434b;margin:0 0 18px;padding-left:24px}
+article li{margin-bottom:7px}
+article blockquote{margin:0 0 18px;padding:6px 0 6px 22px;border-left:3px solid #23406b;font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.5;color:#4a5058}
+.note{background:#fbfaf7;border:1px solid #e6e2d8;border-radius:12px;padding:8px 18px;margin:0 0 18px}
+.note p{font-size:15px;line-height:1.6;color:#3d434b;margin:11px 0}
+.cta{display:inline-flex;align-items:center;gap:8px;background:#23406b;color:#fff;padding:12px 18px;border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;margin:6px 0 30px}
+.cta:hover{background:#16294a;color:#fff;text-decoration:none}
+.related{margin-top:52px;border-top:1px solid #ddd7ca;padding-top:24px}
+.related .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+.related a{display:block;padding:13px 15px;border:1px solid #e6e2d8;border-radius:9px;background:#fbfaf7;margin-bottom:8px;color:#17191c;font-weight:500;font-size:15px}
+.related a:hover{border-color:#ccd8ea;background:#eef2f8;text-decoration:none}
+.related a .rm{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a939c;font-weight:400;margin-top:3px}
+footer{border-top:1px solid #e2ded4;background:#f1efe9}
+footer .in{max-width:760px;margin:0 auto;padding:22px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a939c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in"><a class="brand" href="/"><span class="mk">D</span>Darrel Barreto-White</a><a href="/blog/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#23406b">All articles</a></div></div>
+<div class="wrap">
+<nav class="crumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Teams</nav>
+<div class="kicker">Teams</div>
+<h1>Splitting a Scrum team</h1>
+<div class="meta">21 May 2026 · 6 min read</div>
+<a class="cta" href="/#/blog/splitting-a-scrum-team">Explore the interactive version, with live tools →</a>
+<article>
+<p>Growth is a good problem, but a team that has outgrown a single conversation stops behaving like one team. Here is how I decide when to split a Scrum team, and how I draw the line so each new team can still deliver value on its own.</p>
+<h2>One team is one conversation</h2>
+<p>A Scrum team works because everyone can hold the same conversation — the same goal, the same backlog, the same daily plan. Somewhere around nine or ten people that conversation quietly breaks. Stand-ups run long, refinement splinters into side-chats, and you notice the same few people never really need each other's work. That is the signal I watch for: the team has become two conversations wearing one team's name.</p>
+<div class="note"><p>Signals it is time to split</p><p>The daily scrum regularly runs long and half the room has quietly checked out.</p><p>The backlog serves two or more goals that rarely trade off against each other.</p><p>Stable sub-groups have formed — people naturally pair with the same few colleagues.</p><p>Coordination and merge overhead is growing faster than the output.</p><p>More than about nine people — or you are adding people and getting less back.</p></div>
+<h2>Split around value, not layers</h2>
+<p>The most common mistake is to split by technology — a front-end team, a back-end team, a data team. It feels tidy and it is a trap: no single team can then deliver a change a user would notice, and every story needs three teams to hold hands. Split around value instead. Each new team should own a slice of the product it can take from idea to working software largely on its own. Conway's law is working whether you invite it or not — the system comes to mirror your team boundaries, so draw those boundaries where you want the seams in the product to be.</p>
+<div class="note"><p>Feature teams · prefer</p><p>Cross-functional and organised around a slice of value. One team takes a change from idea to shipped; teams coordinate on architecture, not on every story.</p><p>Component teams · usually not</p><p>Organised by layer or technology. Delivering any real value needs several teams to combine work — you trade independent delivery for specialist utilisation.</p></div>
+<h2>Cut where the seam is thinnest</h2>
+<p>Before you draw new boundaries, map how work actually flows and where it depends on other work. Then cut where the dependency lines are thinnest, not where the org chart looks neatest. A good split is one where two teams can go a whole sprint rarely needing to block on each other. If your proposed boundary has traffic crossing it constantly, you have found a seam inside a single value stream — not the line between two.</p>
+<h2>Keep each new team whole</h2>
+<p>Every team that comes out of a split has to stand on its own: five to nine people, all the skills needed to ship — build, test, design, and a product owner who is actually available — and its own coherent backlog with its own goal. If a proposed team cannot say in one sentence what value it owns, it is not a team yet. It is a component group, and you are back in the trap above.</p>
+<h2>Split people, not just skills</h2>
+<p>A team is not a bag of roles you can pour evenly into two buckets. Once the value boundaries are roughly drawn, the harder half of the job is human: who knows what, who cares about what, and who works well with whom. Get the boxes right and the people wrong, and neither team gels.</p>
+<p>So before I commit to a split, I map the people against it as deliberately as the work:</p>
+<div class="note"><p>Knowledge Map who actually knows each part of the system. Never leave one team with all the context and the other starting from zero — spread the know-how so neither side is blocked on the other to understand its own code.</p><p>Subject-matter experts Spot the single points of failure — the one person who understands billing, or the legacy integration. Split them apart, and pair each SME with someone who can learn the domain, so the knowledge outlives the split.</p><p>Areas of interest People do their best work on problems they care about. Where you can, let interest pull people toward the value stream that excites them — motivation is a real, and free, input to which team someone joins.</p><p>Personalities A team has to gel, not just staff up. Balance the mix — mentors with people who want mentoring, quieter builders with the ones who drive conversation — and be honest about pairings that grind, because a fresh split is your one clean chance to reset them.</p></div>
+<p>None of this trumps keeping each team whole and able to deliver — it is the layer you tune on top once the value boundaries hold. But it is usually the difference between two teams that merely exist and two teams that actually work.</p>
+<h2>Try it: split this team</h2>
+<p>Enough theory — here is a ten-person team that has outgrown one backlog, working across two value streams: Checkout and Onboarding. Send each person to Team Alpha or Team Beta and watch the split get graded live against everything above. ★ marks a subject-matter expert; a ⇄ tag marks a capability both streams rely on. Notice the disciplines don't line up neatly with the streams — so, as you will see, sorting by that label alone won't hand you two whole teams.</p>
+<div class="note"><p>The roster · {{ splitAssignedText }}</p><p>{{ splitPoolLabel }}</p></div>
+<div class="note"><p>Note</p><p>This tool exists to make the thought process tangible, not to model reality. It grades a fixed roster against a handful of the rules above so you can feel the trade-offs. A real split is far messier — people carry history and loyalties, ownership is blurry, teams don't come in tidy tens, and half the dependencies only surface once you have already moved. Treat this as a way to rehearse the thinking, not a formula for the answer.</p></div>
+<h2>How I actually do it</h2>
+<ul><li>Map the value streams and the real dependencies between pieces of work.</li><li>Look for natural seams — where work already clusters and rarely crosses.</li><li>Test each proposed team against three questions: can it deliver value end-to-end, is it cross-functional, does it own a coherent backlog?</li><li>Move people as whole skills, not spare capacity — a team missing testing is not split, it is halved.</li><li>Map the people as carefully as the work — knowledge, SMEs, interests and personalities — so each team has the context and the chemistry to gel.</li><li>Pilot the boundary for a sprint or two; keep what works and redraw what does not.</li></ul>
+<h2>Expect a dip before the lift</h2>
+<p>Splitting resets the clock on how a team forms. Newly separated teams go back through forming and storming — norms, ownership and trust all have to be rebuilt — so plan for a short drop in velocity before it climbs past where you started. That dip is the cost of the split; the focus and independence you get back are the return. Do not split at the first sign of friction, and never split more than one seam at a time.</p>
+<p>And if the trigger was simply that refinement had grown too crowded to be useful, splitting the team is often the more honest fix than perpetually pulling a smaller group into the room — it is the same instinct from Effective refinement, applied to the team instead of the backlog.</p>
+</article>
+<a class="cta" href="/#/blog/splitting-a-scrum-team">Open the interactive version →</a>
+<section class="related"><div class="lbl">Related reading</div><a href="/blog/sprint-review/">Running a Sprint Review<span class="rm">Ceremonies · 5 min read</span></a><a href="/blog/frameworks-compared/">Agile frameworks compared: Scrum, Kanban and XP<span class="rm">Frameworks · 5 min read</span></a><a href="/blog/implementing-safe/">Implementing SAFe: a practical guide<span class="rm">Scaling · 7 min read</span></a></section>
+</div>
+<footer><div class="in"><span>© Darrel Barreto-White</span><a href="/">trdbw.com</a></div></footer>
+</body>
+</html>

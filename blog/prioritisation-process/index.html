@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A practical Agile prioritisation process — Darrel Barreto-White</title>
+<meta name="description" content="Eleven steps from product goal to a clear, explainable order of work — a guided canvas, a decision-flow map, and a before/after ranking walkthrough.">
+<link rel="canonical" href="https://trdbw.com/blog/prioritisation-process/">
+<meta name="author" content="Darrel Barreto-White">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trdbw.com/blog/prioritisation-process/">
+<meta property="og:site_name" content="Darrel Barreto-White">
+<meta property="og:title" content="A practical Agile prioritisation process">
+<meta property="og:description" content="Eleven steps from product goal to a clear, explainable order of work — a guided canvas, a decision-flow map, and a before/after ranking walkthrough.">
+<meta property="og:image" content="https://trdbw.com/headshot.jpg">
+<meta property="article:published_time" content="2026-06-17">
+<meta property="article:author" content="Darrel Barreto-White">
+<meta property="article:section" content="Prioritisation">
+<meta property="article:tag" content="Prioritisation series"><meta property="article:tag" content="Backlog"><meta property="article:tag" content="Stakeholders"><meta property="article:tag" content="Dependencies">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A practical Agile prioritisation process">
+<meta name="twitter:description" content="Eleven steps from product goal to a clear, explainable order of work — a guided canvas, a decision-flow map, and a before/after ranking walkthrough.">
+<meta name="twitter:image" content="https://trdbw.com/headshot.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"A practical Agile prioritisation process","description":"Eleven steps from product goal to a clear, explainable order of work — a guided canvas, a decision-flow map, and a before/after ranking walkthrough.","url":"https://trdbw.com/blog/prioritisation-process/","mainEntityOfPage":{"@type":"WebPage","@id":"https://trdbw.com/blog/prioritisation-process/"},"datePublished":"2026-06-17","dateModified":"2026-06-17","author":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"publisher":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"image":"https://trdbw.com/headshot.jpg","articleSection":"Prioritisation","keywords":"Prioritisation series, Backlog, Stakeholders, Dependencies"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trdbw.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://trdbw.com/blog/"},{"@type":"ListItem","position":3,"name":"A practical Agile prioritisation process","item":"https://trdbw.com/blog/prioritisation-process/"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f1efe9;color:#17191c;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#23406b;text-decoration:none}a:hover{color:#16294a;text-decoration:underline}
+.nav{position:sticky;top:0;z-index:20;background:rgba(241,239,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid #e2ded4}
+.nav .in{max-width:820px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#17191c;font-weight:600;font-size:15px}.brand:hover{text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:7px;background:#23406b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:#8a939c;margin-bottom:26px}.crumb a{color:#8a6d2f}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;color:#17191c;margin-bottom:16px;text-wrap:pretty}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:#8a939c;margin-bottom:28px}
+article h2{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-.01em;color:#17191c;margin:42px 0 12px;text-wrap:pretty}
+article h3{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#17191c;margin:30px 0 10px}
+article p{font-size:16.5px;line-height:1.78;color:#3d434b;margin:0 0 16px}
+article ul,article ol{font-size:16.5px;line-height:1.7;color:#3d434b;margin:0 0 18px;padding-left:24px}
+article li{margin-bottom:7px}
+article blockquote{margin:0 0 18px;padding:6px 0 6px 22px;border-left:3px solid #23406b;font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.5;color:#4a5058}
+.note{background:#fbfaf7;border:1px solid #e6e2d8;border-radius:12px;padding:8px 18px;margin:0 0 18px}
+.note p{font-size:15px;line-height:1.6;color:#3d434b;margin:11px 0}
+.cta{display:inline-flex;align-items:center;gap:8px;background:#23406b;color:#fff;padding:12px 18px;border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;margin:6px 0 30px}
+.cta:hover{background:#16294a;color:#fff;text-decoration:none}
+.related{margin-top:52px;border-top:1px solid #ddd7ca;padding-top:24px}
+.related .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+.related a{display:block;padding:13px 15px;border:1px solid #e6e2d8;border-radius:9px;background:#fbfaf7;margin-bottom:8px;color:#17191c;font-weight:500;font-size:15px}
+.related a:hover{border-color:#ccd8ea;background:#eef2f8;text-decoration:none}
+.related a .rm{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a939c;font-weight:400;margin-top:3px}
+footer{border-top:1px solid #e2ded4;background:#f1efe9}
+footer .in{max-width:760px;margin:0 auto;padding:22px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a939c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in"><a class="brand" href="/"><span class="mk">D</span>Darrel Barreto-White</a><a href="/blog/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#23406b">All articles</a></div></div>
+<div class="wrap">
+<nav class="crumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Prioritisation</nav>
+<div class="kicker">Prioritisation</div>
+<h1>A practical Agile prioritisation process</h1>
+<div class="meta">17 Jun 2026 · 6 min read</div>
+<a class="cta" href="/#/blog/prioritisation-process">Explore the interactive version, with live tools →</a>
+<article>
+<p>From product goal to a clear, explainable order of work</p>
+<p>Prioritisation does not need to involve a complicated scoring model every time two backlog items change position.</p>
+<p>The level of analysis should be proportionate to the decision.</p>
+<p>Reordering two small, well-understood items may require a short conversation. Committing significant funding to a time-sensitive initiative deserves deeper investigation.</p>
+<p>The following process can be adapted for backlog ordering, release planning and stakeholder prioritisation workshops.</p>
+<div class="note"><p>The eleven-step decision flow</p><p>Interactive — select any step</p><p>This is a loop, not a line: Review feeds back into Outcome and Evidence, not a finish line at step eleven.</p><p>Step {{ pracCurStep.n }} of 11 — {{ pracCurStep.label }}</p><p>{{ pracCurStep.purpose }}</p><p>Useful questions</p><p>◆ Common mistake: {{ pracCurStep.mistake }}</p><p>◆ Example: {{ pracCurStep.example }}</p></div>
+<h2>1. Confirm the intended outcome</h2>
+<p>Begin with the product goal or result the team is trying to achieve.</p>
+<p>Without this context, prioritisation becomes a comparison of unrelated requests.</p>
+<p>Ask:</p>
+<ul><li>What outcome are we pursuing?</li><li>Who should benefit?</li><li>How will we know whether progress has been made?</li></ul>
+<h2>2. Agree the decision criteria</h2>
+<p>Select the factors relevant to the decision.</p>
+<p>These may include:</p>
+<ul><li>Customer or business value</li><li>Strategic alignment</li><li>Urgency</li><li>Cost of delay</li><li>Risk reduction</li><li>Effort</li><li>Confidence</li><li>Dependencies</li></ul>
+<p>Use a small set of meaningful criteria rather than an unnecessarily complicated universal model.</p>
+<h2>3. Gather evidence and identify assumptions</h2>
+<p>Collect available:</p>
+<ul><li>Customer research</li><li>Product data</li><li>Operational evidence</li><li>Commercial information</li><li>Contractual requirements</li><li>Regulatory information</li><li>Technical findings</li><li>Delivery data</li></ul>
+<p>Clearly distinguish evidence from estimates and assumptions.</p>
+<p>The absence of perfect information should not prevent a decision, but uncertainty should be visible.</p>
+<h2>4. Assess value, urgency, risk and effort</h2>
+<p>Compare the likely benefit with:</p>
+<ul><li>The consequence of delay</li><li>The risk reduced</li><li>The delivery investment</li><li>The confidence in the current understanding</li></ul>
+<p>The assessment may be qualitative or numerical.</p>
+<p>Numbers are useful when they clarify the discussion. They are harmful when they create an illusion of certainty.</p>
+<h2>5. Identify dependencies and sequencing constraints</h2>
+<p>Make relevant dependencies visible.</p>
+<p>These may involve:</p>
+<ul><li>Technology</li><li>Data</li><li>Suppliers</li><li>Other teams</li><li>Approvals</li><li>Organisational changes</li></ul>
+<p>Describe what is actually required rather than applying a general dependency label.</p>
+<h2>6. Challenge unnecessary dependencies</h2>
+<p>Ask whether each dependency can be:</p>
+<ul><li>Removed</li><li>Reduced</li><li>Mocked</li><li>Split</li><li>Temporarily replaced</li><li>Progressed in parallel</li></ul>
+<p>Do not design the entire delivery sequence around an unverified assumption.</p>
+<h2>7. Split work where appropriate</h2>
+<p>Large items combine several outcomes and make trade-offs difficult.</p>
+<p>Split work into smaller, useful outcomes that can be:</p>
+<ul><li>Assessed independently</li><li>Delivered earlier</li><li>Validated with customers</li><li>Reordered as evidence changes</li></ul>
+<p>The goal is not to create more tickets. It is to create smaller decisions and earlier feedback.</p>
+<div class="note"><p>The guided prioritisation canvas</p><p>Interactive — steps 2 to 11 on one scenario</p><p>Scenario goal: improve customer account self-service — four fictional backlog items, pre-populated so the exercise works without writing anything.</p><p>Nothing you enter here is stored or transmitted — it lives only in this page while you have it open.</p><p>Step 2 — decision criteria</p><p>Steps 3 to 4 — evidence, assumptions and scores</p><p>Steps 5 to 6 — dependency and challenge</p><p>Dependency: {{ pracDepMeta.name }}</p><p>Step 7 — split a large item</p><p>"Manage saved payment methods" combines viewing cards with adding or removing one — two different outcomes with different effort and risk.</p><p>Step 8 — the resulting rank</p><p>Step 9 — validate the order</p><p>{{ pracValidatedCount }} of {{ pracValidateTotal }} checked.</p><p>Step 11 — simulate new information and revise the rank</p></div>
+<h2>8. Rank the items</h2>
+<p>Create a clear order for the items being actively considered.</p>
+<p>Avoid ending the discussion with several items occupying the same effective position.</p>
+<p>Priority categories may still be useful, but rank determines the sequence.</p>
+<h2>9. Validate the order</h2>
+<p>Review the proposed order with the people who hold relevant information.</p>
+<p>Check:</p>
+<ul><li>Technical feasibility</li><li>Missing evidence</li><li>Incorrect assumptions</li><li>Dependency accuracy</li><li>Operational consequences</li><li>Strategic alignment</li></ul>
+<p>Validation should improve the decision. It should not reopen every personal preference without evidence.</p>
+<h2>10. Communicate the trade-offs</h2>
+<p>Explain:</p>
+<ul><li>Why the order was chosen</li><li>What moved</li><li>What will wait</li><li>Which risks remain</li><li>What evidence influenced the decision</li><li>When the order will be reviewed</li></ul>
+<p>When an item moves up, make the displaced work visible.</p>
+<h2>11. Review when information changes</h2>
+<p>Prioritisation is continuous.</p>
+<p>Review the order when:</p>
+<ul><li>Product goals change</li><li>New customer evidence appears</li><li>An incident occurs</li><li>A dependency changes</li><li>A deadline becomes clearer</li><li>Delivery complexity is better understood</li><li>An assumption is disproved</li></ul>
+<p>Do not preserve an outdated order simply because a workshop once produced it.</p>
+<div class="note"><p>Ranking before and after evidence</p><p>Interactive — four stages, same four items</p><p>A changing rank is a reasoned response to new information, not evidence that the earlier decision failed.</p><p>{{ pracSlopeNote }}</p><p>▸ Event log — every movement explained</p></div>
+<h2>Questions teams should ask</h2>
+<p>Use these questions during refinement and prioritisation discussions:</p>
+<ul><li>What outcome does this item support?</li><li>Who benefits?</li><li>What evidence supports the expected value?</li><li>What happens if we delay it?</li><li>Is there a genuine deadline?</li><li>Why does that deadline exist?</li><li>Does this reduce a meaningful risk?</li><li>What must happen before it can be delivered?</li><li>Can the dependency be removed or reduced?</li><li>Can the work be split?</li><li>What is the smallest useful outcome?</li><li>What are we choosing not to do?</li><li>What assumptions are we making?</li><li>What information would change the ranking?</li><li>How will we know whether value was delivered?</li></ul>
+<p>These questions are prompts, not a mandatory form for every ticket.</p>
+<h2>Common prioritisation problems</h2>
+<div class="note"><p>Common-problem diagnostic</p><p>Select any you recognise</p><p>Not a maturity score — just the corrective action for each pattern, once you recognise it. {{ pracRecognisedCount }} of {{ pracProblemTotal }} selected.</p></div>
+<h2>Measuring whether prioritisation is working</h2>
+<p>Useful signals include:</p>
+<ul><li>Progress towards product goals</li><li>Improved customer outcomes</li><li>Reduced lead time</li><li>Faster feedback</li><li>Reduced work in progress</li><li>Fewer obsolete backlog items</li><li>Less unexplained priority churn</li><li>Fewer dependency delays</li><li>Better stakeholder understanding</li><li>Improved predictability</li><li>Reduced operational risk</li><li>Delivery of valuable outcomes</li></ul>
+<p>Teams should also examine:</p>
+<ul><li>How often work is interrupted</li><li>Why priorities change</li><li>How long valuable work waits</li><li>How much refined work is abandoned</li><li>Whether recurring incidents are being addressed</li><li>Whether technical health is improving</li><li>Whether delivered changes produce the expected result</li></ul>
+<div class="note"><p>Prioritisation health — illustrative dashboard</p><p>All values below are illustrative, not measured. Select measures relevant to your own context rather than copying this dashboard directly.</p><p>Work linked to product goals</p><p>{{ pracDashGoalPct }}</p><p>of active work</p><p>Completed outcomes vs. tickets</p><p>{{ pracDashOutcomesLabel }}</p><p>of {{ pracDashTicketsLabel }} completed</p><p>▸ Unexplained priority churn, by Sprint — illustrative</p><p>▸ Lead time to customer feedback, by Sprint — illustrative</p></div>
+<p>Velocity should not be the primary measure of prioritisation quality.</p>
+<p>A team can increase velocity while delivering low-value work.</p>
+<p>It can also reduce velocity temporarily while resolving a major risk or validating an uncertain direction.</p>
+<p>Prioritisation quality is demonstrated by the value and learning created, not by the number of story points completed.</p>
+<h2>Final principle</h2>
+<p>Effective prioritisation is the discipline of making deliberate trade-offs.</p>
+<p>It means:</p>
+<ul><li>Choosing outcomes over activity</li><li>Ordering work rather than merely applying labels</li><li>Distinguishing priority from rank</li><li>Making dependencies visible</li><li>Challenging constraints</li><li>Using evidence where possible</li><li>Keeping the backlog current</li><li>Revisiting decisions when circumstances change</li><li>Being honest about what will not be done</li></ul>
+<p>The objective is not to create a perfect order that never changes.</p>
+<p>The objective is to make the best current decision, understand why it was made and remain willing to change it when better information emerges.</p>
+<blockquote>Prioritisation is the discipline of making the next best choice — and being clear about the choices left behind.</blockquote>
+<div class="note"><p>The prioritisation series</p><p>7. A Practical Agile Prioritisation Process You are here</p></div>
+</article>
+<a class="cta" href="/#/blog/prioritisation-process">Open the interactive version →</a>
+<section class="related"><div class="lbl">Related reading</div><a href="/blog/when-everything-is-urgent/">When everything is urgent<span class="rm">Prioritisation · 5 min read</span></a><a href="/blog/prioritisation-within-a-sprint/">Prioritisation within a Sprint<span class="rm">Prioritisation · 6 min read</span></a><a href="/blog/prioritisation-frameworks/">Agile prioritisation frameworks<span class="rm">Prioritisation · 8 min read</span></a></section>
+</div>
+<footer><div class="in"><span>© Darrel Barreto-White</span><a href="/">trdbw.com</a></div></footer>
+</body>
+</html>

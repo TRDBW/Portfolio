@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementing SAFe: a practical guide — Darrel Barreto-White</title>
+<meta name="description" content="When many teams must build one large solution together — the Agile Release Train, the four configurations, PI Planning and a realistic launch sequence, with a…">
+<link rel="canonical" href="https://trdbw.com/blog/implementing-safe/">
+<meta name="author" content="Darrel Barreto-White">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trdbw.com/blog/implementing-safe/">
+<meta property="og:site_name" content="Darrel Barreto-White">
+<meta property="og:title" content="Implementing SAFe: a practical guide">
+<meta property="og:description" content="When many teams must build one large solution together — the Agile Release Train, the four configurations, PI Planning and a realistic launch sequence, with a…">
+<meta property="og:image" content="https://trdbw.com/headshot.jpg">
+<meta property="article:published_time" content="2026-07-08">
+<meta property="article:author" content="Darrel Barreto-White">
+<meta property="article:section" content="Scaling">
+<meta property="article:tag" content="SAFe"><meta property="article:tag" content="Scaling"><meta property="article:tag" content="Agile Release Train"><meta property="article:tag" content="PI Planning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Implementing SAFe: a practical guide">
+<meta name="twitter:description" content="When many teams must build one large solution together — the Agile Release Train, the four configurations, PI Planning and a realistic launch sequence, with a…">
+<meta name="twitter:image" content="https://trdbw.com/headshot.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Implementing SAFe: a practical guide","description":"When many teams must build one large solution together — the Agile Release Train, the four configurations, PI Planning and a realistic launch sequence, with a…","url":"https://trdbw.com/blog/implementing-safe/","mainEntityOfPage":{"@type":"WebPage","@id":"https://trdbw.com/blog/implementing-safe/"},"datePublished":"2026-07-08","dateModified":"2026-07-08","author":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"publisher":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"image":"https://trdbw.com/headshot.jpg","articleSection":"Scaling","keywords":"SAFe, Scaling, Agile Release Train, PI Planning"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trdbw.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://trdbw.com/blog/"},{"@type":"ListItem","position":3,"name":"Implementing SAFe: a practical guide","item":"https://trdbw.com/blog/implementing-safe/"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f1efe9;color:#17191c;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#23406b;text-decoration:none}a:hover{color:#16294a;text-decoration:underline}
+.nav{position:sticky;top:0;z-index:20;background:rgba(241,239,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid #e2ded4}
+.nav .in{max-width:820px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#17191c;font-weight:600;font-size:15px}.brand:hover{text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:7px;background:#23406b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:#8a939c;margin-bottom:26px}.crumb a{color:#8a6d2f}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;color:#17191c;margin-bottom:16px;text-wrap:pretty}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:#8a939c;margin-bottom:28px}
+article h2{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-.01em;color:#17191c;margin:42px 0 12px;text-wrap:pretty}
+article h3{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#17191c;margin:30px 0 10px}
+article p{font-size:16.5px;line-height:1.78;color:#3d434b;margin:0 0 16px}
+article ul,article ol{font-size:16.5px;line-height:1.7;color:#3d434b;margin:0 0 18px;padding-left:24px}
+article li{margin-bottom:7px}
+article blockquote{margin:0 0 18px;padding:6px 0 6px 22px;border-left:3px solid #23406b;font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.5;color:#4a5058}
+.note{background:#fbfaf7;border:1px solid #e6e2d8;border-radius:12px;padding:8px 18px;margin:0 0 18px}
+.note p{font-size:15px;line-height:1.6;color:#3d434b;margin:11px 0}
+.cta{display:inline-flex;align-items:center;gap:8px;background:#23406b;color:#fff;padding:12px 18px;border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;margin:6px 0 30px}
+.cta:hover{background:#16294a;color:#fff;text-decoration:none}
+.related{margin-top:52px;border-top:1px solid #ddd7ca;padding-top:24px}
+.related .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+.related a{display:block;padding:13px 15px;border:1px solid #e6e2d8;border-radius:9px;background:#fbfaf7;margin-bottom:8px;color:#17191c;font-weight:500;font-size:15px}
+.related a:hover{border-color:#ccd8ea;background:#eef2f8;text-decoration:none}
+.related a .rm{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a939c;font-weight:400;margin-top:3px}
+footer{border-top:1px solid #e2ded4;background:#f1efe9}
+footer .in{max-width:760px;margin:0 auto;padding:22px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a939c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in"><a class="brand" href="/"><span class="mk">D</span>Darrel Barreto-White</a><a href="/blog/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#23406b">All articles</a></div></div>
+<div class="wrap">
+<nav class="crumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Scaling</nav>
+<div class="kicker">Scaling</div>
+<h1>Implementing SAFe: a practical guide</h1>
+<div class="meta">8 Jul 2026 · 7 min read</div>
+<a class="cta" href="/#/blog/implementing-safe">Explore the interactive version, with live tools →</a>
+<article>
+<p>When many teams must build one large solution together — what the Scaled Agile Framework actually asks of you, and how to adopt it without drowning in ceremony.</p>
+<p>The Scaled Agile Framework — SAFe — is the most widely adopted way to run agile across many teams, and the most argued-about. Both facts are earned.</p>
+<p>It earns its place in one specific situation: when several teams must build a single large product together, and the coordination that once fit inside a single Scrum team no longer fits in anyone's head.</p>
+<p>Used there, deliberately, it aligns delivery at scale. Used as a default — or as a way to look agile while changing nothing — it becomes expensive ceremony. This is how to implement it on purpose.</p>
+<blockquote>SAFe is a coordination framework, not an agility upgrade. It aligns teams that are already allowed to deliver — it does not create that permission.</blockquote>
+<h2>What problem SAFe actually solves</h2>
+<p>A single Scrum team shares one goal, one backlog and one daily plan. The alignment happens in the room. The moment you outgrow that — a subject covered in splitting a team once one conversation no longer holds everyone — you have a coordination problem, not a process problem.</p>
+<p>Put eight or ten teams on the same product and the questions multiply faster than any stand-up can answer:</p>
+<ul><li>Whose priority wins when two teams want the same week?</li><li>Who owns the component three teams depend on?</li><li>Which team is blocking which, and since when?</li><li>When do the separate pieces actually integrate?</li><li>What did we, collectively, commit to this quarter?</li></ul>
+<p>SAFe's answer is a shared cadence, a plan every team helped build, dependencies made visible before they bite, and a way for leadership to steer without reaching into each team. That — not extra meetings — is the value it exists to deliver.</p>
+<h2>The building block: the Agile Release Train</h2>
+<p>Almost everything in SAFe hangs off one unit: the Agile Release Train (ART). Get the train right and the rest tends to follow. Get it wrong and no amount of ceremony rescues it.</p>
+<p>A train is a long-lived team of teams — typically 50 to 125 people — that includes everyone needed to deliver a continuous stream of value.</p>
+<div class="note"><p>5–12 teams</p><p>Cross-functional and stable, all sharing the same iteration boundaries.</p><p>One mission</p><p>Organised around a value stream — not front-end, back-end and data in separate silos.</p><p>One cadence</p><p>A shared Program Increment (PI) of 8–12 weeks that every team plans and demos against.</p><p>Aligned roles</p><p>A Release Train Engineer, Product Management and a System Architect steer the whole train.</p></div>
+<p>Organising around value rather than technical layers is the decision that most often makes or breaks a train — the same principle that governs how you split a single team.</p>
+<h2>The four configurations</h2>
+<p>SAFe ships in four configurations, meant to be adopted incrementally rather than all at once.</p>
+<div class="note"><p>Essential · start here</p><p>One ART with the PI cadence, PI Planning, System Demos and Inspect &amp; Adapt. The foundation, and enough for most organisations.</p><p>Large Solution</p><p>Adds a Solution Train to coordinate several ARTs and suppliers building one very large solution. No portfolio concerns.</p><p>Portfolio</p><p>Adds Lean budgets, strategic themes and Lean Portfolio Management so funding follows value streams, not projects.</p><p>Full</p><p>Every level at once. Reserved for the largest enterprises — something you grow into, never start from.</p></div>
+<p>The most common early mistake is reaching for Portfolio or Full on day one. Launch one Essential train, learn from it, and add layers only when the pain is concrete.</p>
+<div class="note"><p>Interactive — which configuration fits?</p><p>Answer three questions about your situation. There is no universal answer — the note explains the reasoning, and every route still starts by launching one train.</p><p>1 · How many teams must coordinate on the product?</p><p>2 · Is it one very large solution — several trains, suppliers, hardware or regulation — that must integrate together?</p><p>3 · Do you need to fund and govern a portfolio of value streams (Lean budgets, strategic themes)?</p></div>
+<h2>PI Planning: the heartbeat</h2>
+<p>If the ART is the unit, PI Planning is the event that makes it beat. Every 8–12 weeks the whole train plans together — in one room, or one virtual one.</p>
+<p>Two days of face-to-face planning replaces months of scattered hand-offs. Teams draft their own plans, surface dependencies live, and negotiate across the train in real time. It is expensive, and it is the cheapest alignment you will ever buy.</p>
+<p>The event produces three things worth more than the schedule:</p>
+<ul><li>Committed objectives — each team's goals for the increment, with business value agreed by Business Owners.</li><li>A program board — dependencies and milestones made visible to everyone at once.</li><li>A confidence vote — the train saying out loud whether the plan is actually believable.</li></ul>
+<blockquote>The plan is the by-product. The alignment created while making it is the point.</blockquote>
+<h2>The roles that change</h2>
+<p>Team-level Scrum Masters and Product Owners do not disappear. SAFe adds roles above them whose job is to align many teams rather than run one.</p>
+<div class="note"><p>Release Train Engineer</p><p>The train's chief Scrum Master — facilitates PI Planning and clears cross-team impediments.</p><p>Product Management</p><p>Owns the program backlog and features — the Product Owner's counterpart above the team.</p><p>System Architect</p><p>Holds the technical vision and the enabler work that keeps trains integrating cleanly.</p><p>Business Owners</p><p>Accountable leaders who set business value at PI Planning — and who have to show up for it.</p></div>
+<h2>A realistic implementation sequence</h2>
+<p>SAFe publishes its own implementation roadmap. Condensed, and stripped of the branding, it runs like this:</p>
+<ol><li>Reach the tipping point. A real, shared reason to change — not a mandate no one believes.</li><li>Train leaders and change agents. The people who will coach the transition learn it first.</li><li>Organise around value. Design the ART around a value stream, and staff it with whole teams.</li><li>Prepare and run the first PI Planning. A prioritised feature set, a date, and everyone in the room.</li><li>Launch the train and coach the events. The cadence only becomes real once it is running.</li><li>Measure outcomes at Inspect &amp; Adapt. Improve the train with evidence, every increment.</li><li>Launch more trains, then extend to portfolio. Scale out only after the first train works.</li></ol>
+<p>It is a loop, not a launch: each increment's outcomes feed the next. And a train should only be launched once it is genuinely ready — which is easier to claim than to prove.</p>
+<div class="note"><p>Interactive — Agile Release Train launch readiness</p><p>Tick everything that is genuinely true today. The verdict updates as you go — and the gaps it leaves are more useful than the score.</p><p>{{ safeVerdictLabel }}</p><p>{{ safeScore }}</p><p>{{ safeVerdictNote }}</p></div>
+<h2>Common failure modes</h2>
+<p>Almost every SAFe horror story is one of a handful of predictable failures — not the framework itself.</p>
+<h3>Water-SAFe-fall</h3>
+<p>Problem: Stage gates and a year of fixed scope wearing PI Planning as a costume. Objectives are treated as a contract, not a forecast.</p>
+<p>Better approach: Let objectives be a forecast that Inspect &amp; Adapt is allowed to revise. If the plan can't change, none of the events matter.</p>
+<h3>Ceremony overload</h3>
+<p>Problem: The organisation counts events instead of value, and measures adoption by attendance.</p>
+<p>Better approach: Every event should create alignment or a decision. If one does neither, cut it — the number of ceremonies was never the goal.</p>
+<h3>An ART in name only</h3>
+<p>Problem: Teams are still siloed by component and integrate late. The train exists on the org chart, not in the delivery.</p>
+<p>Better approach: Organise around value and integrate every iteration. A train that can't produce an integrated demo isn't one yet.</p>
+<h3>No Inspect &amp; Adapt</h3>
+<p>Problem: The built-in improvement loop is skipped when schedules tighten, so the same problems recur every increment.</p>
+<p>Better approach: Protect Inspect &amp; Adapt as the one event you never cut. It is where the framework earns back its cost.</p>
+<h2>When SAFe is the wrong tool</h2>
+<p>SAFe is a large tool for a large problem. It is the wrong choice for:</p>
+<ul><li>A single team, or one small product</li><li>An organisation that simply needs Scrum done well</li><li>A few teams whose coordination fits a lighter approach</li><li>Leadership unwilling to change how it funds and governs work</li></ul>
+<p>That last one is decisive. SAFe cannot fix a culture that refuses to decentralise decisions — it only coordinates teams that are already trusted to deliver. If leadership adopts the ceremonies but keeps the control, you get the cost without the benefit.</p>
+<p>And whatever the framework, the teams inside it still need a clear objective to pull against — the connection between a product goal and the backlog beneath it does not become less important at scale. It becomes harder, and more important.</p>
+<h2>Conclusion</h2>
+<p>SAFe earns its place when many teams truly must move as one. Implemented on purpose, it gives them a shared cadence, a plan they built together, and dependencies they can see coming.</p>
+<p>Launch one Essential train. Keep the ceremonies that create alignment and drop the ones that don't. Protect Inspect &amp; Adapt. And adopt it at the leadership level too — or don't adopt it at all.</p>
+<blockquote>The number of events is not the measure. The measure is whether ten teams can now say, honestly, what they are building together — and why.</blockquote>
+<div class="note"><p>Related reading</p></div>
+</article>
+<a class="cta" href="/#/blog/implementing-safe">Open the interactive version →</a>
+<section class="related"><div class="lbl">Related reading</div><a href="/blog/sprint-review/">Running a Sprint Review<span class="rm">Ceremonies · 5 min read</span></a><a href="/blog/frameworks-compared/">Agile frameworks compared: Scrum, Kanban and XP<span class="rm">Frameworks · 5 min read</span></a><a href="/blog/product-goal-to-backlog/">From Product Goal to Product Backlog<span class="rm">Product · 10 min read</span></a></section>
+</div>
+<footer><div class="in"><span>© Darrel Barreto-White</span><a href="/">trdbw.com</a></div></footer>
+</body>
+</html>

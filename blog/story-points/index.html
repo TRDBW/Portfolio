@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementing story points: a practical guide — Darrel Barreto-White</title>
+<meta name="description" content="Relative estimation, the modified Fibonacci scale, planning poker and the rules that keep points honest — how to get a team estimating well within two sprints.">
+<link rel="canonical" href="https://trdbw.com/blog/story-points/">
+<meta name="author" content="Darrel Barreto-White">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trdbw.com/blog/story-points/">
+<meta property="og:site_name" content="Darrel Barreto-White">
+<meta property="og:title" content="Implementing story points: a practical guide">
+<meta property="og:description" content="Relative estimation, the modified Fibonacci scale, planning poker and the rules that keep points honest — how to get a team estimating well within two sprints.">
+<meta property="og:image" content="https://trdbw.com/headshot.jpg">
+<meta property="article:published_time" content="2026-05-15">
+<meta property="article:author" content="Darrel Barreto-White">
+<meta property="article:section" content="Estimation">
+<meta property="article:tag" content="Story points"><meta property="article:tag" content="Planning poker"><meta property="article:tag" content="Velocity"><meta property="article:tag" content="Relative estimation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Implementing story points: a practical guide">
+<meta name="twitter:description" content="Relative estimation, the modified Fibonacci scale, planning poker and the rules that keep points honest — how to get a team estimating well within two sprints.">
+<meta name="twitter:image" content="https://trdbw.com/headshot.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Implementing story points: a practical guide","description":"Relative estimation, the modified Fibonacci scale, planning poker and the rules that keep points honest — how to get a team estimating well within two sprints.","url":"https://trdbw.com/blog/story-points/","mainEntityOfPage":{"@type":"WebPage","@id":"https://trdbw.com/blog/story-points/"},"datePublished":"2026-05-15","dateModified":"2026-05-15","author":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"publisher":{"@type":"Person","name":"Darrel Barreto-White","url":"https://trdbw.com/"},"image":"https://trdbw.com/headshot.jpg","articleSection":"Estimation","keywords":"Story points, Planning poker, Velocity, Relative estimation"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trdbw.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://trdbw.com/blog/"},{"@type":"ListItem","position":3,"name":"Implementing story points: a practical guide","item":"https://trdbw.com/blog/story-points/"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f1efe9;color:#17191c;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:#23406b;text-decoration:none}a:hover{color:#16294a;text-decoration:underline}
+.nav{position:sticky;top:0;z-index:20;background:rgba(241,239,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid #e2ded4}
+.nav .in{max-width:820px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:#17191c;font-weight:600;font-size:15px}.brand:hover{text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:7px;background:#23406b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:#8a939c;margin-bottom:26px}.crumb a{color:#8a6d2f}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;color:#17191c;margin-bottom:16px;text-wrap:pretty}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:#8a939c;margin-bottom:28px}
+article h2{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-.01em;color:#17191c;margin:42px 0 12px;text-wrap:pretty}
+article h3{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#17191c;margin:30px 0 10px}
+article p{font-size:16.5px;line-height:1.78;color:#3d434b;margin:0 0 16px}
+article ul,article ol{font-size:16.5px;line-height:1.7;color:#3d434b;margin:0 0 18px;padding-left:24px}
+article li{margin-bottom:7px}
+article blockquote{margin:0 0 18px;padding:6px 0 6px 22px;border-left:3px solid #23406b;font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.5;color:#4a5058}
+.note{background:#fbfaf7;border:1px solid #e6e2d8;border-radius:12px;padding:8px 18px;margin:0 0 18px}
+.note p{font-size:15px;line-height:1.6;color:#3d434b;margin:11px 0}
+.cta{display:inline-flex;align-items:center;gap:8px;background:#23406b;color:#fff;padding:12px 18px;border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;margin:6px 0 30px}
+.cta:hover{background:#16294a;color:#fff;text-decoration:none}
+.related{margin-top:52px;border-top:1px solid #ddd7ca;padding-top:24px}
+.related .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;margin-bottom:14px}
+.related a{display:block;padding:13px 15px;border:1px solid #e6e2d8;border-radius:9px;background:#fbfaf7;margin-bottom:8px;color:#17191c;font-weight:500;font-size:15px}
+.related a:hover{border-color:#ccd8ea;background:#eef2f8;text-decoration:none}
+.related a .rm{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a939c;font-weight:400;margin-top:3px}
+footer{border-top:1px solid #e2ded4;background:#f1efe9}
+footer .in{max-width:760px;margin:0 auto;padding:22px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a939c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in"><a class="brand" href="/"><span class="mk">D</span>Darrel Barreto-White</a><a href="/blog/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#23406b">All articles</a></div></div>
+<div class="wrap">
+<nav class="crumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Estimation</nav>
+<div class="kicker">Estimation</div>
+<h1>Implementing story points: a practical guide</h1>
+<div class="meta">15 May 2026 · 4 min read</div>
+<a class="cta" href="/#/blog/story-points">Explore the interactive version, with live tools →</a>
+<article>
+<p>Story points are the most used — and most misused — estimation tool in agile delivery. Done well, they give a team a fast, honest way to size work and forecast. Done badly, they become hours with extra steps. This is the standard method I use to introduce them.</p>
+<h2>What a story point actually measures</h2>
+<p>A story point is a relative measure of effort. It blends three things: the volume of work, its complexity, and the uncertainty or risk around it. It is deliberately not a unit of time — a 2 is roughly twice the effort of a 1, whoever picks it up. That relativity is what lets a team estimate quickly and consistently without debating whose hours count.</p>
+<div class="note"><p>What goes into a pointing</p><p>Interactive — slide the three ingredients</p><p>Slide each ingredient and watch the suggested card move. The point is the balance — a story can be big but boring, or tiny but terrifying.</p><p>Suggested card</p><p>{{ spSummary }}</p><p>No real team computes a point from a formula — you compare against reference stories and talk. This only shows how the three ingredients pull on the number.</p></div>
+<h2>Use the modified Fibonacci scale</h2>
+<p>The industry standard is the modified Fibonacci sequence: 1, 2, 3, 5, 8, 13, 21. The widening gaps are the point — the bigger a piece of work, the less precision anyone really has, and the scale forces a meaningful choice between "about a 5" and "about an 8" instead of a fake debate between 6 and 7.</p>
+<div class="note"><p>1–2 Trivial or small, well understood, no surprises expected.</p><p>3–5 A typical sprint-sized story — some complexity, manageable unknowns.</p><p>8 Large. Fine occasionally, but a strong candidate for splitting.</p><p>13+ Too big to commit to a sprint — split it before it enters one.</p></div>
+<h2>Anchor the scale with reference stories</h2>
+<p>Points only mean something relative to other work, so give the team anchors. Pick two or three recently completed, well-understood stories and agree their sizes as a group — a solid 2, a solid 5. Every new estimate is then a comparison ("bigger than the login fix, smaller than the reporting export") rather than a guess from nothing.</p>
+<h2>Estimate together with planning poker</h2>
+<p>The whole team estimates each story simultaneously — cards, fingers or a tool — and reveals at once, so nobody anchors on the loudest voice. When the numbers diverge, the outliers speak first: the person on 2 and the person on 13 usually know something the rest of the room doesn't. Discuss briefly, re-vote, converge. Two or three minutes per story is plenty; if it takes longer, the story isn't understood, and that discovery is the real value of the exercise.</p>
+<blockquote>If your points convert neatly to hours, you don't have story points — you have hours with a laundering step.</blockquote>
+<div class="note"><p>Planning poker — story refinement</p><p>Interactive — vote &amp; reveal</p><p>"As a finance user, I can export the monthly report as CSV so I can reconcile it offline."</p><p>Your hand — tap a card</p><p>The table</p><p>{{ pokerReadout }}</p></div>
+<p>Try it: vote, reveal, and watch the outliers drive the conversation. The re-vote takes seconds because the discussion has already done the work — that surfaced context, not the number, is what the ceremony is for.</p>
+<h2>Let velocity emerge — don't set it</h2>
+<p>Velocity is the number of points a team completes per sprint, and it only exists in hindsight. After three or so sprints, the rolling average becomes a genuinely useful planning number: it tells you how much the team can take on and when a release will land. Resist the urge to target it, inflate it or "improve" it — the moment velocity becomes a goal, the estimates bend to serve it and the forecast dies.</p>
+<div class="note"><p>Velocity — last 6 sprints</p><p>Interactive — hover &amp; toggle</p><p>{{ velReadout }}</p><p>Completed</p><p>Committed (ghost)</p><p>3-sprint average</p></div>
+<p>Sprint 1 is the classic over-commit; from sprint 2 the team anchors each commitment on what it actually delivered, and the ghost-to-solid gap all but disappears. The gold line is the rolling three-sprint average — the only number worth planning the next sprint against.</p>
+<div class="note"><p>Sprint burndown — 40 pt commitment</p><p>Interactive — hover &amp; drag</p><p>Day 0</p><p>Day 10</p><p>{{ burnReadout }}</p><p>Actual remaining</p><p>Ideal burn</p><p>Scope change</p></div>
+<p>Drag through the sprint above: the flat spell around day 4 is a blocker, the jump on day 5 is scope added mid-sprint, and the closing gap is the team catching up. A burndown tells these stories at a glance — which is exactly what the standup conversation should be about.</p>
+<h2>The rules that keep points honest</h2>
+<ul><li>Never convert points to hours — not in planning, not in reporting.</li><li>Never compare velocity across teams; each team's scale is its own.</li><li>Never use velocity as a performance metric — it's a forecasting input.</li><li>The people doing the work estimate it — not managers, not the loudest senior.</li><li>Re-estimate only when scope materially changes, not because work was hard.</li></ul>
+<h2>Getting started: the first two sprints</h2>
+<p>Sprint zero: agree the scale, pick your reference stories, and poker the top of the backlog. Sprints one and two: track what actually gets done, and in retro compare the biggest estimate misses against reality — not to re-score them, but to sharpen the team's shared sense of size. By sprint three you'll have a usable velocity and, more importantly, a team that argues about scope instead of numbers.</p>
+<p>Story points are a conversation tool. The number is a by-product; the shared understanding it forces is the deliverable.</p>
+</article>
+<a class="cta" href="/#/blog/story-points">Open the interactive version →</a>
+<section class="related"><div class="lbl">Related reading</div><a href="/blog/re-estimating-carryover/">Unfinished at the end of a Sprint: should you re-estimate?<span class="rm">Estimation · 17 min read</span></a><a href="/blog/sprint-review/">Running a Sprint Review<span class="rm">Ceremonies · 5 min read</span></a><a href="/blog/frameworks-compared/">Agile frameworks compared: Scrum, Kanban and XP<span class="rm">Frameworks · 5 min read</span></a></section>
+</div>
+<footer><div class="in"><span>© Darrel Barreto-White</span><a href="/">trdbw.com</a></div></footer>
+</body>
+</html>
